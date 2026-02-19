@@ -8,8 +8,8 @@ const getExchangeRateButton = document.getElementById('get-exchange-rate');
 const currencyOutput = document.getElementById('currency-output');
 const getMoviesButton = document.getElementById('get-movies');
 const moviesOutput = document.getElementById('movies-output');
-const getGithubUserButton = document.getElementById('get-github-user');
-const githubOutput = document.getElementById('github-output');
+const getGitHubUserButton = document.getElementById('get-github-user');
+const gitHubOutput = document.getElementById('github-output');
 const getJokeButton = document.getElementById('get-joke');
 const jokeOutput = document.getElementById('joke-output');
 const getPublicApiButton = document.getElementById('get-public-api');
@@ -47,9 +47,8 @@ async function getWeather() {
         const city = prompt('Enter a city name:');
         if (!city) return;
 
-        const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
+        const apiKey = '77c0b2ffa5ccc2b1c41b5031f8c64005';
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
-
         const data = await response.json();
 
         if (data.cod === 200) {
@@ -83,15 +82,15 @@ getMoviesButton.addEventListener('click', getMovies);
 
 async function getMovies() {
 
-        const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=YOUR_TMDB_API_KEY');
+        const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=4bcf6977ecb553fb1c34778771175ef2');
         const data = await response.json();
         const moviesList = data.results.map(movie => `<li>${movie.title}</li>`).join('');
         document.getElementById('movies-output').innerHTML = `<h3>Popular Movies</h3><ul>${moviesList}</ul>`;
     } 
 
-getGithubUserButton.addEventListener('click', getGithubUser);
+getGitHubUserButton.addEventListener('click', getGitHubUser);
 
-async function getGithubUser() {
+async function getGitHubUser() {
 
         const username = prompt('Enter a GitHub username:');
         if (!username) return;
@@ -106,9 +105,9 @@ async function getGithubUser() {
                 <p>Public Repos: ${data.public_repos}</p>
                 <p>Followers: ${data.followers}</p>
             `;
-            document.getElementById('github-output').innerHTML = userInfo;
+            document.getElementById('gitHub-output').innerHTML = userInfo;
         } else {
-            document.getElementById('github-output').innerHTML = `<p>User not found</p>`;
+            document.getElementById('gitHub-output').innerHTML = `<p>User not found</p>`;
         }
     } 
 
